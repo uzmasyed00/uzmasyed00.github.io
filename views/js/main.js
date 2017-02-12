@@ -448,11 +448,17 @@ var resizePizzas = function(size) {
   }
 
   // Iterates through pizza elements on the page and changes their widths
+  var randomPizzaContainer = document.querySelectorAll(".randomPizzaContainer");
   function changePizzaSizes(size) {
-    for (var i = 0; i < document.querySelectorAll(".randomPizzaContainer").length; i++) {
-      var dx = determineDx(document.querySelectorAll(".randomPizzaContainer")[i], size);
+    //for (var i = 0; i < document.querySelectorAll(".randomPizzaContainer").length; i++) {
+    for (var i = 0; i < randomPizzaContainer.length; i++) {
+      /*var dx = determineDx(document.querySelectorAll(".randomPizzaContainer")[i], size);
       var newwidth = (document.querySelectorAll(".randomPizzaContainer")[i].offsetWidth + dx) + 'px';
-      document.querySelectorAll(".randomPizzaContainer")[i].style.width = newwidth;
+      document.querySelectorAll(".randomPizzaContainer")[i].style.width = newwidth;*/
+
+      var dx = determineDx(randomPizzaContainer[i], size);
+      var newwidth = (randomPizzaContainer[i].offsetWidth + dx) + 'px';
+      randomPizzaContainer[i].style.width = newwidth;
     }
   }
 
@@ -500,7 +506,6 @@ function logAverageFrame(times) {   // times is the array of User Timing measure
 function updatePositions() {
   frame++;
   window.performance.mark("mark_start_frame");
-
   var items = document.querySelectorAll('.mover');
   for (var i = 0; i < items.length; i++) {
     var phase = Math.sin((document.body.scrollTop / 1250) + (i % 5));
