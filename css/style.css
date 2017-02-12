@@ -42,7 +42,7 @@ footer {
 }
 footer span { float: right; font-style: italic; }
 
-/* Smartphones (portrait) */
+/* Smartphones (portrait). if width >480px, then fdont apply this style */
 @media only screen and (max-width: 480px) {
   body { font-size: 12px;}
   header p { padding-left: 4.5em;}
