@@ -451,7 +451,8 @@ var resizePizzas = function(size) {
   var randomPizzaContainer = document.querySelectorAll(".randomPizzaContainer");
   function changePizzaSizes(size) {
     console.log("I am in changePizzaSizes function");
-    for (var i = 0; i < 1; i++) {
+    //for (var i = 0; i < 1; i++) {
+      for (var i = 0; i < 2; i++) {
       //since width of all the pizzas is same, I am running the forloop only once to caluclate the width for efficiency
       console.log("length of randompizacontainer is" + randomPizzaContainer.length);
       var dx = determineDx(randomPizzaContainer[0], size);
