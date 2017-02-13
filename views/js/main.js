@@ -451,12 +451,8 @@ var resizePizzas = function(size) {
   var randomPizzaContainer = document.querySelectorAll(".randomPizzaContainer");
   function changePizzaSizes(size) {
     console.log("I am in changePizzaSizes function");
-    //for (var i = 0; i < document.querySelectorAll(".randomPizzaContainer").length; i++) {
     for (var i = 0; i < 1; i++) {
-      //for (var i = 0; i < randomPizzaContainer.length; i++) {
-      /*var dx = determineDx(document.querySelectorAll(".randomPizzaContainer")[i], size);
-      var newwidth = (document.querySelectorAll(".randomPizzaContainer")[i].offsetWidth + dx) + 'px';
-      document.querySelectorAll(".randomPizzaContainer")[i].style.width = newwidth;*/
+      //since width of all the pizzas is same, I am running the forloop only once to caluclate the width for efficiency
       console.log("length of randompizacontainer is" + randomPizzaContainer.length);
       var dx = determineDx(randomPizzaContainer[0], size);
       var newwidth = (randomPizzaContainer[0].offsetWidth + dx) + 'px';
@@ -506,6 +502,7 @@ function logAverageFrame(times) {   // times is the array of User Timing measure
 // https://www.igvita.com/slides/2012/devtools-tips-and-tricks/jank-demo.html
 
 // Moves the sliding background pizzas based on scroll position
+//move document.body.scrollTop out of the forloop to prevent forced reflow
 function updatePositions() {
   frame++;
   window.performance.mark("mark_start_frame");
@@ -534,8 +531,11 @@ window.addEventListener('scroll', updatePositions);
 document.addEventListener('DOMContentLoaded', function() {
   var cols = 8;
   var s = 256;
+
+  //calculate number of rows of pizzas required in a certain screen height
   var rows = (window.screen.height/s);
-  var requiredPizzas = rows*cols;
+  var requiredPizzas = rows * cols;
+  //only loop through the required number of pizzas
   for (var i = 0; i < requiredPizzas; i++) {
     var elem = document.createElement('img');
     elem.className = 'mover';
