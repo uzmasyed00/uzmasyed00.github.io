@@ -451,15 +451,16 @@ var resizePizzas = function(size) {
   var randomPizzaContainer = document.querySelectorAll(".randomPizzaContainer");
   function changePizzaSizes(size) {
     //for (var i = 0; i < document.querySelectorAll(".randomPizzaContainer").length; i++) {
-    for (var i = 0; i < randomPizzaContainer.length; i++) {
+    for (var i = 0; i < 1; i++) {
+      //for (var i = 0; i < randomPizzaContainer.length; i++) {
       /*var dx = determineDx(document.querySelectorAll(".randomPizzaContainer")[i], size);
       var newwidth = (document.querySelectorAll(".randomPizzaContainer")[i].offsetWidth + dx) + 'px';
       document.querySelectorAll(".randomPizzaContainer")[i].style.width = newwidth;*/
 
-      var dx = determineDx(randomPizzaContainer[i], size);
-      var newwidth = (randomPizzaContainer[i].offsetWidth + dx) + 'px';
+      var dx = determineDx(randomPizzaContainer[0], size);
+      var newwidth = (randomPizzaContainer[0].offsetWidth + dx) + 'px';
       console.log("newwidth is" + newwidth);
-      randomPizzaContainer[i].style.width = newwidth;
+      randomPizzaContainer[0].style.width = newwidth;
     }
   }
 
