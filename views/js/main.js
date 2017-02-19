@@ -473,6 +473,7 @@ var resizePizzas = function(size) {
 
       console.log("newwidth is" + newwidth);
       randomPizzaContainer[i].style.width = newwidth;
+      console.log("width of each resized pizza is" + randomPizzaContainer[i].style.width);
     }
   }
 
