@@ -447,7 +447,7 @@ var resizePizzas = function(size) {
     return dx;
   }
 
-  // Iterates through pizza elements on the page and changes their widths
+ /* // Iterates through pizza elements on the page and changes their widths
   var randomPizzaContainer = document.querySelectorAll(".randomPizzaContainer");
   function changePizzaSizes(size) {
     console.log("I am in changePizzaSizes function");
@@ -456,6 +456,21 @@ var resizePizzas = function(size) {
       console.log("length of randompizacontainer is" + randomPizzaContainer.length);
       var dx = determineDx(randomPizzaContainer[0], size);
       var newwidth = (randomPizzaContainer[0].offsetWidth + dx) + 'px';
+      console.log("newwidth is" + newwidth);
+      randomPizzaContainer[0].style.width = newwidth;
+    }
+  }*/
+
+    // Iterates through pizza elements on the page and changes their widths
+  var randomPizzaContainer = document.querySelectorAll(".randomPizzaContainer");
+  function changePizzaSizes(size) {
+    console.log("I am in changePizzaSizes function");
+     var dx = determineDx(randomPizzaContainer[0], size);
+      var newwidth = (randomPizzaContainer[0].offsetWidth + dx) + 'px';
+    for (var i = 0; i < randomPizzaContainer.length; i++) {
+      //since width of all the pizzas is same, I am running the forloop only once to caluclate the width for efficiency
+      console.log("length of randompizacontainer is" + randomPizzaContainer.length);
+
       console.log("newwidth is" + newwidth);
       randomPizzaContainer[0].style.width = newwidth;
     }
