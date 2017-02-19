@@ -447,33 +447,14 @@ var resizePizzas = function(size) {
     return dx;
   }
 
- /* // Iterates through pizza elements on the page and changes their widths
-  var randomPizzaContainer = document.querySelectorAll(".randomPizzaContainer");
-  function changePizzaSizes(size) {
-    console.log("I am in changePizzaSizes function");
-    for (var i = 0; i < 1; i++) {
-      //since width of all the pizzas is same, I am running the forloop only once to caluclate the width for efficiency
-      console.log("length of randompizacontainer is" + randomPizzaContainer.length);
-      var dx = determineDx(randomPizzaContainer[0], size);
-      var newwidth = (randomPizzaContainer[0].offsetWidth + dx) + 'px';
-      console.log("newwidth is" + newwidth);
-      randomPizzaContainer[0].style.width = newwidth;
-    }
-  }*/
-
     // Iterates through pizza elements on the page and changes their widths
   var randomPizzaContainer = document.querySelectorAll(".randomPizzaContainer");
   function changePizzaSizes(size) {
-    //console.log("I am in modified changePizzaSizes function");
-     var dx = determineDx(randomPizzaContainer[0], size);
-      var newwidth = (randomPizzaContainer[0].offsetWidth + dx) + 'px';
+//since width of all the pizzas is same, I am calculating the width once and reusing the same value within the loop
+    var dx = determineDx(randomPizzaContainer[0], size);
+    var newwidth = (randomPizzaContainer[0].offsetWidth + dx) + 'px';
     for (var i = 0; i < randomPizzaContainer.length; i++) {
-      //since width of all the pizzas is same, I am running the forloop only once to caluclate the width for efficiency
-      //console.log("length of randompizacontainer is" + randomPizzaContainer.length);
-
-      //console.log("newwidth is" + newwidth);
       randomPizzaContainer[i].style.width = newwidth;
-      //console.log("width of each resized pizza is" + randomPizzaContainer[i].style.width);
     }
   }
 
@@ -519,14 +500,15 @@ function logAverageFrame(times) {   // times is the array of User Timing measure
 
 // Moves the sliding background pizzas based on scroll position
 //move document.body.scrollTop out of the forloop to prevent forced reflow
+
 function updatePositions() {
   frame++;
   window.performance.mark("mark_start_frame");
-  //var items = document.querySelectorAll('.mover');
+  //Use ElementByClassName query instead of document.querySelectorAll
   var items = document.getElementsByClassName('mover')
+  //Cached document.body.scrollTop into a variable so that it does not have to be calculated multiple times in the loop
   var docBodyScrollTop = document.body.scrollTop;
   for (var i = 0; i < items.length; i++) {
-    //var phase = Math.sin((document.body.scrollTop / 1250) + (i % 5));
     var phase = Math.sin((docBodyScrollTop/ 1250) + (i % 5));
     items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
   }
